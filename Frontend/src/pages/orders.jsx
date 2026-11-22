@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api, { errorMessage } from "../services/api";
-
+import { useAuth } from "../context/auth-context";
 import { PageMessage } from "../components/PageMessage";
 import { StatusBadge } from "../components/StatusBadge";
 import { orderProducts, statuses } from "../utils/orders";
 
 export function Orders() {
-    
+    const { user } = useAuth();
     const [orders, setOrders] = useState([]);
     const [filters, setFilters] = useState({
         search: "",
@@ -99,14 +99,18 @@ export function Orders() {
         <>
             <div className="page-heading">
                 <div>
-                    <h1>{"Ordres de fabrication"}</h1>
+                    <h1>{user.role === "ADMIN" ? "Ordres de fabrication" : "Mes ordres"}</h1>
                     <p>
-                        {"Planifiez et suivez la fabrication."}
+                        {user.role === "ADMIN"
+                            ? "Planifiez et suivez la fabrication."
+                            : "Consultez et executez les ordres qui vous sont affectes."}
                     </p>
                 </div>
-                {<Link className="btn" to="/orders/new">
+                {user.role === "ADMIN" && (
+                    <Link className="btn" to="/orders/new">
                         Nouvel ordre
-                    </Link>}
+                    </Link>
+                )}
             </div>
             <PageMessage loading={loading} error={error} />
             <section
