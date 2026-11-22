@@ -1,0 +1,9 @@
+Summary,Description,Issue Type,Priority,Estimation initiale heures,Etat local
+Installation et session,Premier administrateur JWT Context API connexion et deconnexion,Task,High,4,Implemente et teste
+Routage et roles,Routes imbriquees Admin Operateur 403 et 404,Task,High,4,Implemente et teste
+Matieres et stocks,Recherche edition entrees seuils et mouvements,Task,High,5,Implemente et teste
+Catalogue produits,Composition non vide quantites positives sans doublon,Task,High,5,Implemente et teste
+Ordres multi-produits,Planification affectation filtres pagination snapshots et execution atomique,Task,High,7,Implemente et teste
+Tests et integration continue,Jest RTL tests backend et GitHub Actions,Task,Medium,4,Verifie localement workflow a executer sur GitHub
+Docker et documentation,Build Nginx proxy API MongoDB replica set et README,Task,Medium,4,Verifie avec Docker local
+Maquette et preparation du debriefing,Charte captures et parcours de demonstration,Task,Medium,2,References locales pretes publication Figma et import Jira a effectuer
