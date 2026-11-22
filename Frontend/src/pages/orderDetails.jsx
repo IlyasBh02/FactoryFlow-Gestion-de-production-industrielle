@@ -116,8 +116,27 @@ export function OrderDetails() {
                             </p>
                         </div>
                         <div className="flex flex-wrap gap-3">
-                            
-                            
+                            {order.status === "PLANNED" && (
+                                <button
+                                    className="btn"
+                                    disabled={saving}
+                                    onClick={() => {
+                                        setError("");
+                                        setConfirmation("start");
+                                    }}
+                                >
+                                    Demarrer l'ordre
+                                </button>
+                            )}
+                            {order.status === "IN_PROGRESS" && (
+                                <button
+                                    className="btn"
+                                    disabled={saving}
+                                    onClick={() => transition("complete")}
+                                >
+                                    {saving ? "Enregistrement..." : "Terminer l'ordre"}
+                                </button>
+                            )}
                             {user.role === "ADMIN" && order.status === "PLANNED" && (
                                 <>
                                     <Link className="btn-secondary" to={`/orders/${id}/edit`}>
